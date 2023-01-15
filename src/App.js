@@ -23,6 +23,7 @@ function App() {
       await signOut(auth)
       setIsAuth(false)
       setRoom(null)
+      cookies.remove("auth-token")
   }
 
   if (!isAuth) {
