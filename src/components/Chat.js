@@ -8,9 +8,12 @@ export const Chat = ({room})=>{
     const [newMessage, setNewMessage] = useState("")
     const messageRef = collection(db, "messages")
     const [messageArr, setMessageArr] = useState([])
+
     const handleSubmit = async(e)=>{
         e.preventDefault()
-
+        if(newMessage.length === 0)
+        return; 
+        
         await addDoc(messageRef, {
             user: auth.currentUser.displayName,
             message: newMessage,
